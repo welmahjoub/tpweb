@@ -20,6 +20,9 @@ function DnD(canvas, interactor) {
      {
 
      	this.press=true;	
+     	
+     	console.log("press");
+     	
 
      }.bind(this); // lies la method a la classe Dnd
 
@@ -30,6 +33,8 @@ function DnD(canvas, interactor) {
      		var res=getMousePosition(canvas,event);
      		this.x2=res.x;
      		this.y2=res.y;
+     		
+     		console.log(res);
      	}
 
      }.bind(this); // lies la method a la classe Dnd
@@ -41,7 +46,9 @@ function DnD(canvas, interactor) {
      		var res=getMousePosition(canvas,event);
      		this.x2=res.x;
      		this.y2=res.y;
+     		console.log(res);
      	}
+     	
 
      }.bind(this); // lies la method a la classe Dnd
 	

@@ -52,6 +52,7 @@ function DnD(canvas, interactor) {
             this.y2=res.y;
 
              interactor.onInteractionEnd(this);
+             
             console.log(res);
         }
         

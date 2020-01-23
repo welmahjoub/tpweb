@@ -45,24 +45,23 @@ function Pencil(ctx, drawing, canvas) {
    
 	}.bind(this);
 
-	this.onInteractionUpdate=function(DnD)
+	this.onInteractionUpdate=function(dnd)
 	{
 		
 		if(this.currEditingMode === editingMode.line)
 		{
 
-			this.currentShape=new Line(currColour,currLineWidth,DnD.InitX,DnD.InitY,DnD.FinalX,DnD.FinalY);
+			this.currentShape=new Line(currColour,currLineWidth,dnd.InitX,dnd.InitY,dnd.FinalX,dnd.FinalY);
 		}
 
 		if(this.currEditingMode === editingMode.rect)
 		{
-			function Rectangle(largeur,hauteur,x,y,epaisseur,couleur)
-			this.currentShape=new Rectangle(DnD.InitX,DnD.InitY,DnD.FinalX,DnD.FinalY,currLineWidth,currColour);
+			this.currentShape=new Rectangle(dnd.InitX,dnd.InitY,dnd.FinalX,dnd.FinalY,this.currLineWidth,this.currColour);
 		}
 
 	}.bind(this);
 
-	this.onInteractionEnd=function(DnD)
+	this.onInteractionEnd=function(dnd)
 	{
      currentShape.paint();
 

@@ -20,10 +20,8 @@ function Rectangle(largeur,hauteur,x,y,epaisseur,couleur)
 Rectangle.prototype=new Forme();
 
 
-function Line(couleur,epaisseur,InitX,InitY,FinalX,FinalY)
+function Line(InitX,InitY,FinalX,FinalY,epaisseur,couleur)
 {
-
-
 	Forme.call(this,couleur,epaisseur);
 	this.InitX=InitX;
 	this.InitY=InitY;
@@ -41,23 +39,28 @@ function Drawing()
 
 Rectangle.prototype.paint = function(ctx) {
 //TODO Manager color
-    ctx.rect(this.InitX, this.InitY, this.FinalX, this.FinalY);
+	console.log('pass par la')
+    ctx.rect(this.x, this.y, this.x + this.largeur, this.y + this.hauteur);
     ctx.stroke();
 };
 
 Line.prototype.paint = function(ctx) {
 //TODO Manager color
 
+
+
     ctx.beginPath();
-    ctx.moveTo(this.InitX, this.InitY);
-    ctx.lineTo(this.FinalX, this.FinalY);
+    ctx.moveTo(this.InitX ,this.InitY);
+    ctx.lineTo(this.FinalX,this.FinalY);
     ctx.stroke();
+
+    console.log(this);
 
 };
 
 
 Drawing.prototype.paint = function(ctx) {
-    console.log(this.getForms());
+    console.log(this.forms);
     ctx.fillStyle = '#F0F0F0'; // set canvas' background color
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     this.forms.forEach(function(eltDuTableau) {

@@ -15,42 +15,43 @@ function DnD(canvas, interactor) {
     this.press=false;
 
 	// Developper les 3 fonctions gérant les événements
+
+     this.pression = function(event)
+     {
+
+        this.press=true;    
+        
+        console.log("press");
+        
+
+     }.bind(this); // lies la method a la classe Dnd
+
+     this.deplacer= function(event)
+     {
+        if(this.press)
+        {
+            var res=getMousePosition(canvas,event);
+            this.x2=res.x;
+            this.y2=res.y;
+            
+            console.log(res);
+        }
+
+     }.bind(this); // lies la method a la classe Dnd
+
+     this.relacher = function(event)
+     {
+        if(this.press)
+        {
+            var res=getMousePosition(canvas,event);
+            this.x2=res.x;
+            this.y2=res.y;
+            console.log(res);
+        }
+        
+
+     }.bind(this); // lies la method a la classe Dnd
      
-     function pression(event)
-     {
-
-     	this.press=true;	
-     	
-     	console.log("press");
-     	
-
-     }.bind(this); // lies la method a la classe Dnd
-
-     function deplacer(event)
-     {
-     	if(press)
-     	{
-     		var res=getMousePosition(canvas,event);
-     		this.x2=res.x;
-     		this.y2=res.y;
-     		
-     		console.log(res);
-     	}
-
-     }.bind(this); // lies la method a la classe Dnd
-
-     function relacher(event)
-     {
-     	if(press)
-     	{
-     		var res=getMousePosition(canvas,event);
-     		this.x2=res.x;
-     		this.y2=res.y;
-     		console.log(res);
-     	}
-     	
-
-     }.bind(this); // lies la method a la classe Dnd
 	
 	// Associer les fonctions précédentes aux évènements du canvas.
 
@@ -59,6 +60,7 @@ function DnD(canvas, interactor) {
 	canvas.addEventListener('mouseup', this.relacher, false);
 
 };
+
 
 
 // Place le point de l'événement evt relativement à la position du canvas.
